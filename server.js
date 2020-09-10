@@ -1,9 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyparser = require('body-parser');
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const posts = require('./routes/api/posts');
 const app = express();
+
+//body parser configuration
+app.use(bodyparser.urlencoded({
+  extended: false
+}));
+app.use(bodyparser.json());
 
 //first route
 app.get('/', (req, res) => res.send('Hello Developer!'));
@@ -17,7 +24,7 @@ const port = 7007;
 
 app.listen(port, () => console.log (`Server Running on Port ${port}`));
 
-//db config
+//access mongodb
 const db = require('./config/keys').mongoURI;
 
 //connect to mongodb
