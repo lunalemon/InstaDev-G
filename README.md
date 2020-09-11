@@ -1,2 +1,2 @@
 # InstaDev-G
- Social media connecting women in coding and web development
+ Social media platform connecting women in coding and web development
