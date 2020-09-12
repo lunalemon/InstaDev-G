@@ -16,11 +16,20 @@
     "express": "^4.17.1",
     "gravatar": "^1.8.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.10.4",
+    "mongoose": "^5.10.5",
+    "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "validator": "^13.1.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Veenakrishna2313/InstaDev-G.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Veenakrishna2313/InstaDev-G/issues"
+  },
+  "homepage": "https://github.com/Veenakrishna2313/InstaDev-G#readme"
 }
