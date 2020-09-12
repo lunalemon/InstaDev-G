@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const gravatar = require('gravatar');
 const User = require('../../models/User');
+const validateRegisterInput = require('../../validation/register');
 const router = express.Router();
 
 //@route  GET/api/users/test
@@ -15,6 +16,12 @@ router.get('/test', (req, res) => res.json({
 //@desc   registers the user
 //@access public
 router.post('/register', (req, res) => {
+  const {errors, isValid} = validateRegisterInput(req.body);
+
+  if(!isValid){
+    return res.status(400).json(errors);
+  } 
+
   User.findOne({
     email:req.body.email
   })
