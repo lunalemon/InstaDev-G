@@ -46,7 +46,7 @@ router.post('/register', (req, res) => {
   })
   }
 })
-.catch();
+.catch((err) => console.log(err));
 })
 
 //FOR VEENA <3
