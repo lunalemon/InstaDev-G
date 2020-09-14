@@ -4,7 +4,9 @@ const bodyparser = require('body-parser');
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const posts = require('./routes/api/posts');
+const passport=require('passport');
 const app = express();
+
 
 //body parser configuration
 app.use(bodyparser.urlencoded({
@@ -33,3 +35,7 @@ mongoose
 .then(() => console.log('MongodB Connected'))
 .catch(err => console.log(err));
 
+
+//passport configuration
+app.use(passport.initialize());
+require('./config/passport')(passport);
