@@ -1,4 +1,5 @@
 const express = require('express');
+  const router = express.Router();
 const bcrypt = require('bcryptjs');
 const gravatar = require('gravatar');
 const User = require('../../models/User');
@@ -7,8 +8,8 @@ const passport = require('passport');
 
 const validateRegisterInput = require('../../validation/register');
 const router = express.Router();
-
 const keys = require('../../config/keys');
+
 
 //@route  POST/api/users/register
 //@desc   registers the user
@@ -103,5 +104,16 @@ router.post("/login", (req, res) => {
     .catch((err) => console.log(err));
 });
 
+//@route GET /api/users/current
+//@desc Return current user info
+//@access Private
+
+router.get('/current',
+  passport.authenticate('jwt', {session:false}),
+  (req,res)=>{
+
+   return res.json(req.user);
+
+})
 
 module.exports = router;
