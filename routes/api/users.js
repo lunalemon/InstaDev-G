@@ -54,4 +54,16 @@ router.post('/register', (req, res) => {
 //@descr  Logs user in
 //@access Public
 
+router.post('/login', (req,res)=>{
+
+const email=req.body.email;
+const password=req.body.password;
+
+
+
+}
+)
+
+
+
 module.exports = router;
