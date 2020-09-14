@@ -2,8 +2,12 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const gravatar = require('gravatar');
 const User = require('../../models/User');
+const jwt= require('jsonwebtoken');
+const passport = require('passport');
+
 const router = express.Router();
 
+const keys = require('../../config/keys');
 
 //@route  POST/api/users/register
 //@desc   registers the user
@@ -49,35 +53,48 @@ router.post('/register', (req, res) => {
 //@descr  Logs user in
 //@access Public
 
-router.post('/login', (req,res)=>{
+router.post("/login", (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
 
-const email=req.body.email;
-const password=req.body.password;
+  //Find user with email
 
-//Find a user with the given email
+  User.findOne({ email })
+    .then((user) => {
+      if (!user) {
+        return res.status(404).json({ email: "User not Found" });
+      }
 
-User.findOne({ email: email })
-  .then((user) => {
-    if (!user) {
-      return res.status(404).json({ email: " User not found" });
-    }
+      //check password
+      bcrypt
+        .compare(password, user.password)
+        .then((isMatch) => {
+          if (isMatch) {
+            //User Matched
+            const payload = {
+              id: user.id,
+              name: user.name,
+              avatar: user.avatar,
+            };
 
-    //check for password
-    bcrypt.compare(password, user.password) // comparing new password with hashed password
-      .then((isMatch) => {
-        if (isMatch) {
-          return res.json({ msg: "Success!" });
-        } else {
-          return res.status(400).json({ password: "Password incorrect" });
-        }
-      })
-      .catch((err) => console.log(err));
-  })
-  .catch((err) => console.log(err));
+            //sign Token
 
-}
-)
-
+            jwt.sign(
+              payload,
+              keys.secretOrKey,
+              { expiresIn: 3600 },
+              (err, token) => {
+                return res.json({ token: "Bearer " + token });
+              }
+            );
+          } else {
+            return res.status(404).json({ password: "Password incorrect" });
+          }
+        })
+        .catch((err) => console.log(err));
+    })
+    .catch((err) => console.log(err));
+});
 
 
 module.exports = router;
