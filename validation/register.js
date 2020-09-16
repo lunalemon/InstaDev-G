@@ -19,15 +19,13 @@ module.exports = function validateRegisterInput(data) {
   if(!Validator.isEmail(data.email)) {
     errors.email = 'Email is Invalid';
   }
-
   if(isEmpty(data.password)) {
-    errors.passwod = 'Password Field Required';
+    errors.password = 'Password Field Required';
   }
   if(isEmpty(data.password2)) {
     errors.password2 = 'Confirm Password';
   }
-  
-  if(!Validator.equals(data.password, data.password2)) {
+    if(!Validator.equals(data.password, data.password2)) {
     errors.password2 = 'Passwords Must Match';
   }
 
