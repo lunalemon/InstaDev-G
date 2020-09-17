@@ -5,7 +5,7 @@ const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const posts = require('./routes/api/posts');
 const app = express();
-
+const passport = require('passport');
 //body parser configuration
 app.use(bodyparser.urlencoded({
   extended: false
@@ -29,7 +29,14 @@ const db = require('./config/keys').mongoURI;
 
 //connect to mongodb
 mongoose
-.connect(db)
+  .connect(db , {
+     useNewUrlParser: true ,
+     useUnifiedTopology: true 
+}
+)
 .then(() => console.log('MongodB Connected'))
 .catch(err => console.log(err));
 
+  //Passport configuration
+  app.use(passport.initialize());
+  require('./config/passport')(passport);

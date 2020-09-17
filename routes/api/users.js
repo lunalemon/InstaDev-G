@@ -4,6 +4,9 @@ const gravatar = require('gravatar');
 const User = require('../../models/User');
 const validateRegisterInput = require('../../validation/register');
 const router = express.Router();
+const jwt = require('jsonwebtoken');
+const keys = require('../../config/keys');
+const passport = require('passport');
 
 //@route  POST/api/users/register
 //@desc   registers the user
@@ -53,5 +56,50 @@ router.post('/register', (req, res) => {
 //@route  POST/api/users/login
 //@descr  Logs user in
 //@access Public
+
+
+
+router.post('/login', (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  //Find the user with email
+  User.findOne({ email })
+    .then(user => {
+      if (!user) {
+        return res.status(404).json({ email: 'User not found' });
+      }
+
+      //Check password
+      bcrypt.compare(password, user.password)
+        .then(isMatch => {
+          if (isMatch) {
+            // if user match
+            const payload = { id: user.id, name: user.name, avatar: user.avatar };
+            
+            // sign token
+            jwt.sign(
+              payload,
+              keys.secretOrKey,
+              { expiresIn: 3600 },
+              (err, token) => {
+                return res.json({token: 'Bearer '+token})
+              }
+            )
+          }
+            else 
+            {
+              return res.status(404).json({ password: 'Password incorect' });
+            }
+            
+          
+        })
+        .catch(err => console.log(err));
+
+    })
+    .catch();
+
+})
+
 
 module.exports = router;
