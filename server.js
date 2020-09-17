@@ -6,8 +6,12 @@ const profile = require('./routes/api/profile');
 const posts = require('./routes/api/posts');
 const passport=require('passport');
 const app = express();
+<<<<<<< HEAD
 
 
+=======
+const passport = require('passport');
+>>>>>>> 6403fe6... profile working
 //body parser configuration
 app.use(bodyparser.urlencoded({
   extended: false
@@ -39,7 +43,13 @@ mongoose
 .then(() => console.log('MongodB Connected'))
 .catch(err => console.log(err));
 
+<<<<<<< HEAD
 
 //passport configuration
 app.use(passport.initialize());
 require('./config/passport')(passport);
+=======
+  //Passport configuration
+  app.use(passport.initialize());
+  require('./config/passport')(passport);
+>>>>>>> 6403fe6... profile working
