@@ -7,14 +7,8 @@ const passport = require('passport');
 
 const validateRegisterInput = require('../../validation/register');
 const router = express.Router();
-<<<<<<< HEAD
-const jwt = require('jsonwebtoken');
-const keys = require('../../config/keys');
-const passport = require('passport');
-=======
 const keys = require('../../config/keys');
 
->>>>>>> e42db258b9504482f4dac83ad29521c1ebfcd96c
 
 //@route  POST/api/users/register
 //@desc   registers the user
@@ -66,29 +60,6 @@ router.post('/register', (req, res) => {
 //@descr  Logs user in
 //@access Public
 
-<<<<<<< HEAD
-
-
-router.post('/login', (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
-
-  //Find the user with email
-  User.findOne({ email })
-    .then(user => {
-      if (!user) {
-        return res.status(404).json({ email: 'User not found' });
-      }
-
-      //Check password
-      bcrypt.compare(password, user.password)
-        .then(isMatch => {
-          if (isMatch) {
-            // if user match
-            const payload = { id: user.id, name: user.name, avatar: user.avatar };
-            
-            // sign token
-=======
 router.post("/login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
@@ -115,32 +86,11 @@ router.post("/login", (req, res) => {
 
             //sign Token
 
->>>>>>> e42db258b9504482f4dac83ad29521c1ebfcd96c
             jwt.sign(
               payload,
               keys.secretOrKey,
               { expiresIn: 3600 },
               (err, token) => {
-<<<<<<< HEAD
-                return res.json({token: 'Bearer '+token})
-              }
-            )
-          }
-            else 
-            {
-              return res.status(404).json({ password: 'Password incorect' });
-            }
-            
-          
-        })
-        .catch(err => console.log(err));
-
-    })
-    .catch();
-
-})
-
-=======
                 return res.json({ token: "Bearer " + token });
               }
             );
@@ -164,6 +114,5 @@ router.get('/current',
    return res.json(req.user);
 
 })
->>>>>>> e42db258b9504482f4dac83ad29521c1ebfcd96c
 
 module.exports = router;

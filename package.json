@@ -16,11 +16,7 @@
     "express": "^4.17.1",
     "gravatar": "^1.8.1",
     "jsonwebtoken": "^8.5.1",
-<<<<<<< HEAD
-    "mongoose": "^5.10.4",
-=======
     "mongoose": "^5.10.5",
->>>>>>> e42db258b9504482f4dac83ad29521c1ebfcd96c
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "validator": "^13.1.1"
