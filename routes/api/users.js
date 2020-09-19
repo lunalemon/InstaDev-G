@@ -6,6 +6,7 @@ const jwt= require('jsonwebtoken');
 const passport = require('passport');
 
 const validateRegisterInput = require('../../validation/register');
+const validateLoginInput = require('../../validation/Login');
 const router = express.Router();
 const keys = require('../../config/keys');
 
@@ -60,7 +61,14 @@ router.post('/register', (req, res) => {
 //@descr  Logs user in
 //@access Public
 
-router.post("/login", (req, res) => {
+router.post('/login', (req, res) => {
+
+  const { errors, isValid } = validateLoginInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+  
   const email = req.body.email;
   const password = req.body.password;
 
@@ -113,6 +121,19 @@ router.get('/current',
 
    return res.json(req.user);
 
-})
+});
+
+//@route POST /api/users/forgotpassword
+//@desc resetting password
+//@access Private
+
+router.post(
+  './forgotpassword',
+  passport.authenticate("jwt", { session: false }),
+  (req,res)=>{
+
+
+  }
+);
 
 module.exports = router;
