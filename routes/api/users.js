@@ -7,6 +7,7 @@ const passport = require('passport');
 
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/Login');
+const validateforgotpasswordInput = require('../../validation/forgotpassword');
 const router = express.Router();
 const keys = require('../../config/keys');
 
@@ -68,7 +69,7 @@ router.post('/login', (req, res) => {
   if (!isValid) {
     return res.status(400).json(errors);
   }
-  
+
   const email = req.body.email;
   const password = req.body.password;
 
@@ -125,15 +126,62 @@ router.get('/current',
 
 //@route POST /api/users/forgotpassword
 //@desc resetting password
-//@access Private
+//@access Public
 
-router.post(
-  './forgotpassword',
-  passport.authenticate("jwt", { session: false }),
-  (req,res)=>{
+router.post('/forgotpassword',
+async (req,res)=>{
 
+  const { errors, isValid } = validateforgotpasswordInput(req.body);
 
+  if (!isValid) {
+    return res.status(400).json(errors);
   }
-);
+  const email = req.body.email;
+  let newpassword = req.body.password;
+  
+  console.log("before hash:",newpassword);
+
+  
+  //Find user with email
+  User.findOne({ email })
+  .then( (user)=>{
+  if(!user){
+  return res.status(404).json({ email: "User not found"});  
+  }
+  let userid = user._id;
+    bcrypt.genSalt(10, (err, salt) =>{
+      if (err) throw err;
+      bcrypt.hash(newpassword, salt, (err, hash)=>{
+        if (err) throw err;
+          console.log(" hash:", hash);
+       
+          newpassword = hash;
+          console.log("after hash:", newpassword);
+       
+       
+          //update user new password in DataBase
+       
+         User.findOneAndUpdate(
+           { 
+             _id: userid
+             },
+            {
+               password: newpassword
+             })
+
+           .then((user) => res.json({Msg:'User Password Updated'}))
+           .catch((err) => console.log(err));
+      });
+      
+    })
+ 
+  })
+  .catch((err)=>console.log(err));
+
+
+
+});
+  
+  
 
 module.exports = router;
