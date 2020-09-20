@@ -6,6 +6,9 @@ const mongoose = require("mongoose");
 const User = require("../../models/User");
 const { ObjectId } = require("mongoose");
 const validateProfileInput = require("../../validation/profile");
+const validatechangepasswordInput = require("../../validation/changepassword");
+const bcrypt = require('bcryptjs');
+
 
 // @route POST /api/profile/
 // @desc Create or Edit your Profile
@@ -302,6 +305,63 @@ router.get(
   }
 );
 
+// @route API /api/profile/changepassword
+// @desc Allows user to change the profile login password
+// @access private
+
+router.post('/changepassword', passport.authenticate('jwt',{session:false}),
+(req,res)=>{
+
+  const { errors, isValid } = validatechangepasswordInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+  
+  let newpassword = req.body.password;
+  
+  console.log("before hash:",newpassword);
+
+  
+  //Find user with whose password needs to be changed
+  Profile.findOne({ user:req.user.id })
+  .then( (profile)=>{
+  if(!profile){
+  return res.status(404).json({ email: "User not found"});  
+  }
+  let userid = profile.user;
+    bcrypt.genSalt(10, (err, salt) =>{
+      if (err) throw err;
+      bcrypt.hash(newpassword, salt, (err, hash)=>{
+        if (err) throw err;
+          console.log(" hash:", hash);
+       
+          newpassword = hash;
+          console.log("after hash:", newpassword);
+       
+       
+          //update user new password in DataBase
+       
+         User.findOneAndUpdate(
+           { 
+             _id: userid
+             },
+            {
+               password: newpassword
+             })
+
+           .then((user) => res.json({Msg:'User Password Updated'}))
+           .catch((err) => console.log(err));
+      });
+      
+    })
+ 
+  })
+  .catch((err)=>console.log(err));
+
+
+
+});
 
 
 module.exports = router;
