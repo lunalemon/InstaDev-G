@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  
 }
 
 img {
@@ -9,13 +8,12 @@ img {
 
 .landing {
   position: relative;
-  background: url('./img/LandingImage5.jpg') no-repeat;
+  background: url('./img/LandingImage5.jpg') no-repeat; 
   background-size: cover;
   background-position: center;
   height: 100vh;
   margin-top: -24px;
   margin-bottom: -50px;
-
 }
 
 .landing-inner {
@@ -45,23 +43,21 @@ img {
 }
 
 .display-3 {
-  color:rgb(243, 104, 127);
+  color: rgb(243, 104, 127);
   font-weight: bold;
   margin-top: 5px;
-  margin-left:65%;
+  margin-left: 65%;
 }
 
 .lead{
-  color:rgb(243, 104, 127);
+  color:rgb(243, 104, 127); 
   margin-left:60%;
 }
 
 .btn .btn-lg{
   margin-left:100%;
   margin-top:10px;
-  
   color:rgb(243, 104, 127);
-
 }
 
 .btn{
@@ -71,8 +67,9 @@ img {
 }
 
 .btn-info{
-background-color:rgb(243, 104, 127);
-border-color:transparent;
+/* background-color:rgb(243, 104, 127); */
+background-color:rgb(94, 86, 87);
+border-color: transparent;
 }
 
 .nav-link{
@@ -96,5 +93,5 @@ element.style {
 .btn-info:not(:disabled):not(.disabled).active, .btn-info:not(:disabled):not(.disabled):active, .show>.btn-info.dropdown-toggle {
   color: #fff;
   background-color:rgb(230, 75, 96);
-  border-color:rgb(230, 75, 96);
+  border-color:rgb(230, 75, 96); 
 }
