@@ -2,22 +2,20 @@
   text-align: center;
 }
 
-img {
-  width: 100%;
-}
+
 
 .landing {
   position: relative;
-  background: url('./img/LandingImage5.jpg') no-repeat; 
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
+  background: url('./img/LandingImage_Updated.gif') no-repeat;
+  background-size: 50%;
+  
+  width: 100%;
+  
+  height: 600px;
   margin-top: -24px;
-  margin-bottom: -50px;
-}
+  margin-bottom: -49px;
+  
 
-.landing-inner {
-  padding-top: 80px;
 }
 
 .dark-overlay {
@@ -34,8 +32,8 @@ img {
 }
 
 .latest-profiles-img {
-  width: 40px;
-  height: 40px;
+  width: 200px;
+  height: 100px;
 }
 
 .form-control::placeholder {
@@ -43,55 +41,74 @@ img {
 }
 
 .display-3 {
-  color: rgb(243, 104, 127);
+  color:rgb(193, 153, 212);
   font-weight: bold;
-  margin-top: 5px;
-  margin-left: 65%;
+  margin-top: 40px;
+  margin-left:65%;
 }
 
 .lead{
-  color:rgb(243, 104, 127); 
-  margin-left:60%;
+  color:rgb(236, 196, 18);
+  margin-left:65%;
+  font-weight: inherit;
+
 }
 
 .btn .btn-lg{
   margin-left:100%;
   margin-top:10px;
-  color:rgb(243, 104, 127);
+  
+  color:rgb(193, 153, 212);
+
 }
 
 .btn{
   float: right;
   margin-top: 50px;
   width: 150px;
+  margin-right: 25px;
 }
 
 .btn-info{
-/* background-color:rgb(243, 104, 127); */
-background-color:rgb(94, 86, 87);
-border-color: transparent;
+background-color:rgb(193, 153, 212);
+border-color:transparent;
 }
 
-.nav-link{
-color:white;
+#mobile-nav a{
+color: rgb(236, 196, 18);
 }
 
 
-element.style {
-}
 .btn:not(:disabled):not(.disabled) {
     cursor: pointer;
 }
 .btn-info:hover{
     color: #fff;
-    background-color:rgb(230, 75, 96);
-    border-color:rgb(230, 75, 96);
+    background-color:rgb(178, 84, 221);
+    border-color:rgb(193, 153, 212);
 }
 
 
 
 .btn-info:not(:disabled):not(.disabled).active, .btn-info:not(:disabled):not(.disabled):active, .show>.btn-info.dropdown-toggle {
   color: #fff;
-  background-color:rgb(230, 75, 96);
-  border-color:rgb(230, 75, 96); 
+  background-color:rgb(193, 153, 212);
+  border-color:rgb(193, 153, 212);
+}
+
+.col-lg-1 {
+  width:100%;
+}
+
+.container {
+  width:100%;
+  
+}
+
+.btn-light{
+  background-color: rgb(236, 196, 18);
+}
+
+.navbar-dark .navbar-brand {
+  color:rgb(193, 153, 212);
 }
