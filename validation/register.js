@@ -16,7 +16,7 @@ module.exports = function validateRegisterInput(data) {
   }
 
     if (!Validator.matches(data.password, passw)) {
-      errors.password = 'Password should be between 8 to 15 characters which contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character ';
+      errors.password = 'Password must be between 8 to 15 characters and contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character ';
     }
   
   if(!Validator.isEmail(data.email)) {
