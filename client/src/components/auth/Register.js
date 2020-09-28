@@ -41,7 +41,7 @@ class Register extends Component {
       <div className="row">
         <div className="col-md-8 m-auto">
           <h1 className="display-4 text-center">Sign Up</h1>
-          <h3 className="lead text-center">Create your account</h3>
+          <h3 className="lead text-center">Create an account</h3>
           <form onSubmit={this.onSubmit}>
           <div className="form-group">
         <input type="text" className={classnames("form-control form-control-lg", {"is-invalid":errors.name})} placeholder="Name" name="name" 
@@ -63,7 +63,7 @@ class Register extends Component {
               </div>
             )
             }
-              <small className="form-text text-muted" > Use your Gravatar email address to link a personal online avatar.  Don't have one?  Create yours <a href="https://www.en.gravatar.com"><u> here</u></a>. </small>
+              <small className="form-text text-muted" > Use a Gravatar email address to link your personal online avatar.  Don't have one?  Create it <a href="https://www.en.gravatar.com"><u> here</u></a>. </small>
             </div>
             <div className="form-group">
               <input type="password" className={classnames("form-control form-control-lg", {"is-invalid":errors.password})}  placeholder="Password" name="password" value={this.state.password}

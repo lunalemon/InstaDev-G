@@ -57,7 +57,6 @@ router.post('/register', (req, res) => {
     .catch((err) => console.log(err));
 })
 
-//FOR VEENA <3
 //@route  POST/api/users/login
 //@descr  Logs user in
 //@access Public
