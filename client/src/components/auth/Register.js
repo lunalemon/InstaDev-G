@@ -63,7 +63,7 @@ class Register extends Component {
               </div>
             )
             }
-              <small className="form-text text-muted" > Use a Gravatar email address to link your personal online avatar.  Don't have one?  Create it <a href="https://www.en.gravatar.com"><u> here</u></a>. </small>
+              <small className="form-text text-muted" > Optional: Bring along your personal online avatar with a Gravatar email address. Want to create one? Click <a href="https://en.gravatar.com"><u>here</u></a>. </small>
             </div>
             <div className="form-group">
               <input type="password" className={classnames("form-control form-control-lg", {"is-invalid":errors.password})}  placeholder="Password" name="password" value={this.state.password}
