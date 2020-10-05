@@ -12,8 +12,8 @@ class Landing extends Component {
             <h1 className="display-3 mb-4">InstaDev-G
             </h1>
             <p className="lead"> Passion. Code. Collaboration. </p>
-                <Link to="/login" className="btn btn-lg btn-light">Login</Link>
-                <Link to="/register"  className="btn btn-lg btn-info mr-2">Sign Up</Link>
+            <Link to="/login" className="btn btn-lg btn-light">Login</Link>
+            <Link to="/register"  className="btn btn-lg btn-info mr-2">Sign Up</Link>
           </div>
         </div>
       </div>
