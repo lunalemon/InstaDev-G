@@ -6,11 +6,15 @@ import Landing from './components/Layout/Landing';
 import Footer from './components/Layout/Footer';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Register from './components/auth/Register';
+
 import store from './store';
+
+import Login from './components/auth/Login';
 
 class App extends Component {
   render() {
   return (
+
     <Provider store={store}>
     <Router>
     <div className="App">
@@ -21,6 +25,7 @@ class App extends Component {
     </div>
     </Router>
     </Provider>
+
   );
 };
 }
