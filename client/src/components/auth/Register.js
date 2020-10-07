@@ -47,8 +47,8 @@ class Register extends Component {
     <div className="container">
       <div className="row">
         <div className="col-md-8 m-auto">
-          <h1 className="display-4 text-center">Sign Up</h1>
-          <h3 className="lead text-center">Create an account</h3>
+          <h1 className="display-4 text-center" Style="font-weight:Bold">Sign Up</h1>
+          <h3 className="text-left">Create an account</h3>
           <form onSubmit={this.onSubmit}>
           <div className="form-group">
         <input type="text" className={classnames("form-control form-control-lg", {"is-invalid":errors.name})} placeholder="Name" name="name" 
@@ -93,8 +93,10 @@ class Register extends Component {
             )
             }
 
-            </div>
-            <input type="submit" className="btn btn-info btn-block mt-4" />
+                </div>
+                <div className="form-group">
+                  <input type="submit" className="btn btn-info btn-block" Style="float:left;" />
+                  </div>
           </form>
         </div>
       </div>

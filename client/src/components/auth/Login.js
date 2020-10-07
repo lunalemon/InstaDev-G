@@ -41,10 +41,8 @@ import classnames from "classnames";
          <div className="container">
            <div className="row">
              <div className="col-md-8 m-auto">
-               <h1 className="display-4 text-center">Log In</h1>
-               <p className="lead text-center">
-                 Sign in to your InstaDev account
-               </p>
+               <h1 className="display-4 text-center" Style="font-weight:Bold;margin-bottom:30px;">Log In</h1>
+               
                <form onSubmit={this.onSubmit}>
                  <div className="form-group">
                    <input
@@ -76,7 +74,9 @@ import classnames from "classnames";
                      <div className="invalid-feedback"> {errors.password}</div>
                    )}
                  </div>
-                 <input type="submit" className="btn btn-info btn-block mt-4" />
+                 <div className="form-group">
+                   <input type="submit" className="btn btn-info btn-block mt-4" Style="float:left;" />
+                   </div>
                </form>
              </div>
            </div>
