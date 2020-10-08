@@ -47,6 +47,13 @@
   font-weight: inherit;
 }
 
+.text-left{
+  color:rgb(236, 196, 18);
+  font-weight: inherit;
+  font-size:150%;
+  margin-bottom: 20px;
+}
+
 .btn .btn-lg{
   margin-left:100%;
   margin-top:10px;
@@ -54,7 +61,7 @@
 }
 
 .btn{
-  float: right;
+  float:right;
   margin-top: 50px;
   width: 150px;
   margin-right: 25px;
@@ -99,3 +106,5 @@ color: rgb(236, 196, 18);
 .navbar-dark .navbar-brand {
   color:rgb(193, 153, 212);
 }
+
+

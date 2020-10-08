@@ -10,6 +10,7 @@ const Post = require("../../models/Post");
 
 // Validation
 const validatePostInput = require("../../validation/post");
+
 // @route   GET api/posts
 // @desc    Get posts
 // @access  Public
@@ -30,6 +31,9 @@ router.get("/:id", (req, res) => {
       res.status(404).json({ nopostfound: "No post found with that ID" })
     );
 });
+
+
+
 
 // @route   POST api/posts
 // @desc    Create post
